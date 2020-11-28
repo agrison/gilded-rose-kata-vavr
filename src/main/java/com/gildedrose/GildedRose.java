@@ -21,10 +21,10 @@ class GildedRose {
     }
 
     Function<Item, Item> agedBrie = item ->
-            item.quality < 50 ? item.increaseQuality(item.sellIn < 0 ? 2 : 1) : item;
+            item.increaseQuality(item.sellIn < 0 ? 2 : 1) : item;
 
     Function<Item, Item> defaultItem = item ->
-            item.quality > 0 ? item.decreaseQuality(item.sellIn <= 0 ? 2 : 1) : item;
+            item.decreaseQuality(item.sellIn <= 0 ? 2 : 1) : item;
 
     Function<Item, Item> backStage = item ->
             Match(item).of(Case($(i -> i.sellIn < 0), item::resetQuality),
