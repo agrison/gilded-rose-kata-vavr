@@ -9,15 +9,17 @@ import static java.lang.Math.min;
 @With
 @AllArgsConstructor
 public class Item {
-    public String name;
-    public int sellIn, quality;
+    static final int MIN_QUALITY = 0;
+    static final int MAX_QUALITY = 50;
+    final String name;
+    int sellIn, quality;
 
     public Item decreaseQuality(int quantity) {
-        return withQuality(max(0, quality - quantity));
+        return withQuality(max(MIN_QUALITY, quality - quantity));
     }
 
     public Item increaseQuality(int quantity) {
-        return withQuality(min(50, quality + quantity));
+        return withQuality(min(MAX_QUALITY, quality + quantity));
     }
 
     public Item resetQuality() {
